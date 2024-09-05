@@ -22,7 +22,7 @@ Now, you can install tree by running:
 /too/bs/tree.sh -pscbkiC
 ```
 
-That's a lot of flags! Here's what they do:
+That's a lot of flags! Here's what they mean:
 ```bash
 # p - pull
 # s - setup
