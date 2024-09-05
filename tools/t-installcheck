@@ -1,3 +1,7 @@
 #!/bin/bash
 
-rg -i "$1" /t/meta/installed.too || t-die "Package '$1' is not installed"
+if rg -i "$1" /t/meta/installed.too > /dev/null; then
+  t-warn "Package '$1' is installed"
+else
+  t-die "Package '$1' is not installed"
+fi
