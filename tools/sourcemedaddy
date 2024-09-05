@@ -29,6 +29,8 @@ export -f pathremove pathprepend pathappend
 pathappend /t/tools/
 t-msg "Appended /t/tools/ to PATH"
 
+mkdir -v /t/src/
+
 if [[ -z $XORG_PREFIX ]]; then
   t-die "Variable 'XORG_PREFIX' is not set"
 else
