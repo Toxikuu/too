@@ -1,0 +1,31 @@
+#!/bin/bash
+
+FILE="$1"
+XHASH="$2"
+HASH_TYPE="$3"
+
+case $HASH_TYPE in 
+  md5)
+    CHASH=$(md5sum "$FILE" | awk '{print $1}')
+    ;;
+  sha1)
+    CHASH=$(sha1sum "$FILE" | awk '{print $1}')
+    ;;
+  sha256)
+    CHASH=$(sha256sum "$FILE" | awk '{print $1}')
+    ;;
+  sha512)
+    CHASH=$(sha512sum "$FILE" | awk '{print $1}')
+    ;;
+  *)
+    echo "Unsupported hash type: $HASH_TYPE"
+    exit 1
+    ;;
+esac
+
+if [[ "$CHASH" == "$XHASH" ]]; then
+    echo "Hash verification successful: $HASH_TYPE matches"
+else
+    echo "Hash verification failed: $HASH_TYPE does not match"
+    exit 1
+fi

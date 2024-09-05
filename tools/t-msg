@@ -1,0 +1,2 @@
+#!/bin/bash
+echo -e "\x1b[34;3m * \x1b[39m$1\x1b[0m"

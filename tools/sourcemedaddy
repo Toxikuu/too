@@ -1,0 +1,42 @@
+#!/bin/bash
+pathremove () {
+        local IFS=':'
+        local NEWPATH
+        local DIR
+        local PATHVARIABLE=${2:-PATH}
+        for DIR in ${!PATHVARIABLE} ; do
+                if [ "$DIR" != "$1" ] ; then
+                  NEWPATH=${NEWPATH:+$NEWPATH:}$DIR
+                fi
+        done
+        export $PATHVARIABLE="$NEWPATH"
+}
+
+pathprepend () {
+        pathremove $1 $2
+        local PATHVARIABLE=${2:-PATH}
+        export $PATHVARIABLE="$1${!PATHVARIABLE:+:${!PATHVARIABLE}}"
+}
+
+pathappend () {
+        pathremove $1 $2
+        local PATHVARIABLE=${2:-PATH}
+        export $PATHVARIABLE="${!PATHVARIABLE:+${!PATHVARIABLE}:}$1"
+}
+
+export -f pathremove pathprepend pathappend
+
+pathappend /t/tools/
+t-msg "Appended /t/tools/ to PATH"
+
+if [[ -z $XORG_PREFIX ]]; then
+  t-die "Variable 'XORG_PREFIX' is not set"
+else
+  t-msg "Variable 'XORG_PREFIX' is set to $XORG_PREFIX"
+fi
+
+if [[ -z $MAKEFLAGS ]]; then
+  t-die "Variable 'MAKEFLAGS' is not set"
+else
+  t-msg "Variable 'MAKEFLAGS' is set to $MAKEFLAGS"
+fi

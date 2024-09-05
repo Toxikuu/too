@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [[ $1 =~ \.tar\.gz$ ]]; then
+  echo "tar.gz"
+elif [[ "$1" =~ \.tar\.bz2$ ]]; then
+    echo "tar.bz2"
+elif [[ "$1" =~ \.tar\.xz$ ]]; then
+    echo "tar.xz"
+elif [[ "$1" =~ \.tgz$ ]]; then
+    echo "tgz"
+elif [[ "$1" =~ \.tbz2$ ]]; then
+    echo "tbz2"
+else
+    echo "${1##*.}"
+fi

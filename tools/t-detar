@@ -1,0 +1,16 @@
+#!/bin/bash
+
+TARBALL="$1"
+HASH="$2"
+HASH_TYPE="$3"
+XTAR="$4"
+
+t-hashcheck "$TARBALL" "$HASH" "$HASH_TYPE" || t-die "Hash verification failed for $TARBALL"
+
+mkdir -v temp && cd temp
+mv -v ../"$TARBALL" .
+tar xvf "$TARBALL"
+mv -v "$TARBALL" ../
+mv -v * ../"$XTAR"
+cd ..
+rm -rv temp
