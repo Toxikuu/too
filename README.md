@@ -1,8 +1,10 @@
 # Too
 Tox's "low-level" source-based package manager, built for LFS
 
-# Info
-***This is a prototype development version. DO NOT USE THIS YET.***
+# Archival
+Too is a predecessor to gimme which is a predecessor to rid. Too is dead, but I'll keep this repo around. 
+
+Also note, this project was never stable to begin with, so probably don't use it unless you either really know what you're doing or enjoy living life on the edge.
 
 ## Basic Usage
 For demonstration purposes, let's walk through the installation of tree.
